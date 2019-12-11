@@ -6,7 +6,7 @@ class ShopToRoot extends React.Component {
     }
     render() {
         return (
-            <div>Shop to root</div>
+            <div>link 0</div>
         );
     }
 }
