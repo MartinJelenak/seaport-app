@@ -7,27 +7,27 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentBodyId: 0
+      currentBodyId: ''
     }
   }
   render() {
     return (
       <>
         <Menu onClick={this.handleButtonChange} />
-        <BodyProgram />
+        <BodyProgram id={this.state.currentBodyId} />
       </>
     );
   }
-  handleButtonChange = (event, id) => {
+  handleButtonChange = (event) => {
     this.setState({
-      currentBodyId: this.fn(event.target.id)
+      currentBodyId: ukazka(event.target.id)
     })
-  }
-  fn(msg) {
-    console.log(msg)
-    return msg
   }
 }
 
+function ukazka(l) {
+  console.log(l)
+  return l
+}
 
 export default App;

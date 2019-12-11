@@ -1,5 +1,6 @@
 import React from 'react'
 import ShopToRoot from './shopToRoot.js'
+import NextProgram from './nextProgram.js'
 
 class BodyProgram extends React.Component {
     constructor(props) {
@@ -7,11 +8,21 @@ class BodyProgram extends React.Component {
         this.state = {}
     }
     render() {
-        return (
-            <div id='bodyDiv'>
-                <ShopToRoot />
-            </div>
-        );
+        if (this.props.id == '' || this.props.id == 'link0') {
+            return (
+                <div id='bodyDiv'>
+                    <ShopToRoot />
+                </div>
+            )
+        }
+        else if (this.props.id === 'link1') {
+            return (
+                <div id='bodyDiv'>
+                    <NextProgram />
+                </div>
+            )
+        }
+
     }
 }
 
