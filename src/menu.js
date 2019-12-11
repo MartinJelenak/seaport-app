@@ -12,8 +12,8 @@ class Menu extends React.Component {
                     <img src="./seaportIco.png" alt='lol' />
                 </div>
                 <ul>
-                    <li><a id='link0' onClick={this.props.onClick} href="buton">link 0</a></li>
-                    <li><a id='link1' onClick={this.props.onClick} href="link 1">link 1</a></li>
+                    <button id='link0' className='menuBtn' onClick={this.props.onClick} href="buton">Shop to root</button><br />
+                    <button id='link1' className='menuBtn' onClick={this.props.onClick} href="link 1">Next Script</button><br />
                 </ul>
             </div >
         );
