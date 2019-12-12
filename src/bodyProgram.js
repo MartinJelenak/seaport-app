@@ -8,7 +8,7 @@ class BodyProgram extends React.Component {
         this.state = {}
     }
     render() {
-        if (this.props.id == '' || this.props.id == 'link0') {
+        if (this.props.id === '' || this.props.id === 'link0') {
             return (
                 <div id='bodyDiv'>
                     <ShopToRoot />

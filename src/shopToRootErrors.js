@@ -1,13 +1,13 @@
 import React from 'react'
-class ShopToRootErrors extends Rext.Component {
+class ShopToRootErrors extends React.Component {
     constructor(props) {
         super(props);
         this.state = {}
     }
     render() {
-        return ( 
-            
-         );
+        return (
+            <p>errors</p>
+        );
     }
 }
 
