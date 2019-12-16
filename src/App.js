@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Menu from './menu.js'
 import BodyProgram from './bodyProgram.js'
+const { ipcRenderer } = window.require("electron");
 
 class App extends React.Component {
   constructor(props) {

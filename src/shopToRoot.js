@@ -1,18 +1,21 @@
 import React from 'react'
 import ShopToRootErrors from './shopToRootErrors.js'
 // import shopToRoot from './shopToRoot/renderer.js'
-const { ipcRenderer } = window.require("electron");
+// const { ipcRenderer } = window.require("electron");
+const ipcRenderer = window.require('electron').ipcRenderer
+
 
 class ShopToRoot extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            ipc: false
         }
     }
+
     render() {
         return (
             <form>
+                <input directory="" webkitdirectory="" onclick={this.showFileName} type="file" />
                 <div>
                     <h3>Shop render to root</h3>
                 </div>
@@ -30,29 +33,24 @@ class ShopToRoot extends React.Component {
             </form>
         );
     }
+
+
+    fshowFileName(event) {
+        console.log(event.target.value)
+    }
+
+    fn2(event, args) {
+        alert('data', args.data)
+    }
+
     fnOnStartClick = (event) => {
-        event.preventDefault(); //pre refreshovanie reactu koli <form> treba pouzit funkciu event.preventDefault();
         if (event.target.id === 'errorBtn') {
-            ipcRenderer.send("open-file-dialog")
+            // ipcRenderer.send("open-file-dialog")
         } else {
             console.log('START')
         }
     }
-    componentDidMount() {
-        if (window.isElectron) {
-
-            window.ipcRenderer.on('selected-directory', (event, arg) => {
-                console.log(arg);
-                this.setState({ ipc: true })
-            })
-            window.ipcRenderer.send('open-file-dialog')
-        }
-    }
-
-    // shopToRoot() {
-
-
-    // }
 }
 
 export default ShopToRoot;
+
