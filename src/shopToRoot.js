@@ -2,7 +2,8 @@ import React from 'react'
 import ShopToRootErrors from './shopToRootErrors.js'
 // import shopToRoot from './shopToRoot/renderer.js'
 // const { ipcRenderer } = window.require("electron");
-const ipcRenderer = window.require('electron').ipcRenderer
+// const ipcRenderer from './shopToRoot/preload.js'
+
 
 
 class ShopToRoot extends React.Component {
@@ -15,7 +16,7 @@ class ShopToRoot extends React.Component {
     render() {
         return (
             <form>
-                <input directory="" webkitdirectory="" onclick={this.showFileName} type="file" />
+                <input directory="" webkitdirectory="" onClick={this.showFileName} type="file" />
                 <div>
                     <h3>Shop render to root</h3>
                 </div>
@@ -44,11 +45,20 @@ class ShopToRoot extends React.Component {
     }
 
     fnOnStartClick = (event) => {
-        if (event.target.id === 'errorBtn') {
-            // ipcRenderer.send("open-file-dialog")
-        } else {
-            console.log('START')
-        }
+        window.chlpataOpica.dialog.showOpenDialog({
+            properties: ['openFile', 'openDirectory']
+        }, (files) => {
+            console.log(files);
+            if (files) {
+                event.sender.send('selected-directory', files)
+            }
+        });
+        event.preventDefault();
+        // if (event.target.id === 'errorBtn') {
+        //     // ipcRenderer.send("open-file-dialog")
+        // } else {
+        //     console.log('START')
+        // }
     }
 }
 

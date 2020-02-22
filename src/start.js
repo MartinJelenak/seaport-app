@@ -3,8 +3,8 @@ const app = electron.app
 const path = require('path')
 const isDev = require('electron-is-dev')
 const { ipcMain, dialog } = require('electron')
-const BrowserWindow = electron.BrowserWindow
 
+const BrowserWindow = electron.BrowserWindow;
 let mainWindow
 
 function createWindow() {
@@ -14,9 +14,10 @@ function createWindow() {
         webPreferences: {
             nodeIntegration: true,
             webSecurity: true,
-            preload: __dirname + '/shopToRoot/preload.js'
+            preload: __dirname + '/preload.js'
         },
     })
+
     mainWindow.setMenuBarVisibility(false)
     mainWindow.loadURL(
         isDev
@@ -27,17 +28,11 @@ function createWindow() {
     mainWindow.on('closed', () => {
         mainWindow = null
     })
-}
 
-ipcMain.on('open-file-dialog', (event) => {
-    dialog.showOpenDialog({
-        properties: ['openFile', 'openDirectory']
-    }, (files) => {
-        if (files) {
-            event.sender.send('selected-directory', files)
-        }
+    mainWindow.webContents.on('selected-directory', (xx) => {
+        console.log(xx);
     });
-})
+}
 
 app.on('ready', createWindow)
 
@@ -52,3 +47,6 @@ app.on('activate', () => {
         createWindow()
     }
 })
+
+
+
